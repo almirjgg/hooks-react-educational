@@ -1,24 +1,30 @@
-import { useState } from 'react';
+import { useState } from "react"
 
-export const useCounter = (initialValue = 10) => {
-  const [counter, setCounter] = useState(initialValue);
 
-  const handlerCounterIncrement = (val = 1) => {
-    setCounter(ctr => ctr + val);
-  };
+export const useCounter = ( initialValue = 10 ) => {
 
-  const handlerCounterDecrement = () => {
-    setCounter(ctr => ctr - val);
-  };
+    const [ counter, setCounter ] = useState( initialValue )
 
-  const handlerCounterReset = (val = 1) => {
-    setCounter(initialValue);
-  };
+    const increment = ( value = 1 ) => {
+        setCounter( counter + value );
+    }
 
-  return {
-    counter,
-    handlerCounterIncrement,
-    handlerCounterReset,
-    handlerCounterDecrement,
-  };
-};
+    const decrement = ( value = 1 ) => {
+        // if ( counter === 0 ) return;
+
+        setCounter( counter - value );
+    }
+
+    const reset = () => {
+        setCounter( initialValue );
+    }
+
+    return {
+        counter,
+        increment,
+        decrement,
+        reset,
+    }
+
+}
+
